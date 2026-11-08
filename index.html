@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#c9a961">
+<title>El Hossein El Ghazy · Marbrier & Décorateur à Tétouan</title>
+<style>
+/* ============ BASE ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#c9a961; --gold-d:#b8984d; --gold-l:#d4b978;
+  --bg:#faf9f7; --ink:#2c2c2c; --sub:#6b6b6b;
+  --green:#00a651; --wa:#ffc107;
+  --card:#ffffff; --line:#e9e4d8;
+  --shadow:0 10px 28px rgba(70,55,20,.10);
+  --disp:"Didot","Bodoni MT","Playfair Display","Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --body:"Avenir Next","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);color:var(--ink);min-height:100vh;
+  background:radial-gradient(900px 420px at 50% -80px,rgba(201,169,97,.16),transparent 65%),var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+/* Voile de veines de marbre en fond */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cg fill='none' stroke='%23c9a961'%3E%3Cpath d='M-20 120C160 60 260 220 470 150S720 90 760 160' stroke-opacity='.10' stroke-width='2'/%3E%3Cpath d='M-40 420C120 360 300 480 520 400S700 350 760 420' stroke-opacity='.08' stroke-width='1.6'/%3E%3Cpath d='M-30 620C180 560 340 680 560 610' stroke-opacity='.08' stroke-width='1.2'/%3E%3Cpath d='M120 -20C90 140 220 260 160 420S200 660 140 740' stroke-opacity='.06' stroke-width='1.2'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:700px 700px;
+}
+[hidden]{display:none!important}
+img{max-width:100%}
+button{font-family:inherit}
+:focus-visible{outline:3px solid rgba(201,169,97,.55);outline-offset:2px;border-radius:6px}
+
+/* ============ DRAPEAUX ============ */
+.flags{
+  position:fixed;top:12px;inset-inline-end:12px;z-index:60;display:flex;gap:7px;
+  padding:6px 8px;background:rgba(255,255,255,.75);backdrop-filter:blur(8px);
+  border-radius:999px;border:1px solid rgba(201,169,97,.3);box-shadow:0 4px 16px rgba(60,50,20,.12);
+}
+.flag{width:30px;height:22px;border-radius:6px;border:2px solid transparent;cursor:pointer;padding:0;overflow:hidden;background:none;transition:transform .2s,border-color .2s}
+.flag svg{width:100%;height:100%;display:block}
+.flag:hover{transform:scale(1.14)}
+.flag.on{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,169,97,.25)}
+
+/* ============ LAYOUT ============ */
+.wrap{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:0 18px 46px}
+.orn{text-align:center;color:var(--gold);font-size:13px;letter-spacing:.6em;margin:26px 0 -4px;opacity:.85}
+
+/* ============ HERO / PROFIL ============ */
+.hero-band{
+  position:relative;height:170px;background:#1a1a1a;border-radius:0 0 28px 28px;overflow:hidden;
+  box-shadow:0 14px 30px rgba(26,26,26,.18);
+}
+.hero-band::before{
+  content:"";position:absolute;inset:0;opacity:.9;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg fill='none' stroke='%23c9a961' stroke-opacity='.14'%3E%3Crect x='18' y='18' width='28' height='28'/%3E%3Crect x='18' y='18' width='28' height='28' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:64px 64px;
+}
+.hero-band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.avatar-wrap{display:flex;justify-content:center;margin-top:-70px;position:relative;z-index:2}
+.avatar{
+  width:140px;height:140px;border-radius:50%;background:#1a1a1a;border:4px solid #fff;
+  box-shadow:0 14px 34px rgba(26,26,26,.28);display:grid;place-items:center;position:relative;overflow:hidden;
+}
+.avatar::after{content:"";position:absolute;inset:5px;border-radius:50%;border:1.5px dashed rgba(201,169,97,.75);animation:spin 30s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.av-mark{display:flex;flex-direction:column;align-items:center;gap:3px;transform:translateY(5px)}
+.av-dot{width:13px;height:13px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px rgba(201,169,97,.9)}
+.av-m{font-family:var(--disp);font-size:60px;font-weight:700;color:#fff;line-height:.95}
+.profile{text-align:center;margin-top:16px}
+.profile h1{font-family:var(--disp);font-size:26px;font-weight:700;letter-spacing:.3px;color:#1a1a1a}
+.tagline{margin-top:7px;color:var(--gold-d);font-weight:600;font-size:13.5px;letter-spacing:.05em}
+.desc{margin:10px auto 0;max-width:350px;color:var(--sub);font-size:13.5px;line-height:1.65}
+.loc{margin-top:9px;display:inline-flex;align-items:center;gap:6px;color:var(--gold-d);font-size:12.5px;font-weight:600}
+
+/* ============ 3 BOUTONS CARRÉS ============ */
+.sq-row{display:flex;justify-content:center;gap:16px;margin-top:24px}
+.sq{
+  width:52px;height:52px;border-radius:14px;border:0;cursor:pointer;
+  background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff;
+  display:grid;place-items:center;text-decoration:none;box-shadow:var(--shadow);
+  transition:transform .2s,box-shadow .2s,background .2s;
+}
+.sq:hover{background:var(--gold-d);transform:translateY(-3px);box-shadow:0 14px 26px rgba(184,152,77,.4)}
+
+/* ============ ACCORDÉONS ============ */
+.accs{display:flex;flex-direction:column;gap:11px;margin-top:24px}
+.acc-h{
+  width:100%;display:flex;align-items:center;gap:11px;border:0;cursor:pointer;text-align:start;
+  background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff;
+  border-radius:14px;padding:15px 16px;font-size:15px;font-weight:600;line-height:1.25;
+  box-shadow:var(--shadow);transition:background .2s,transform .2s;
+}
+.acc-h:hover{background:var(--gold-d);transform:translateY(-1px)}
+.acc-h .ic{flex:none;opacity:.95}
+.acc-h .lbl{flex:1}
+.acc-h .chev{flex:none;transition:transform .35s}
+.acc-h[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.acc-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.4,0,.2,1)}
+.acc-b.open{grid-template-rows:1fr}
+.acc-inner{overflow:hidden;min-height:0}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:9px 2px 4px;padding:20px 18px;box-shadow:var(--shadow)}
+.panel .intro{font-size:13.5px;color:var(--sub);line-height:1.7}
+.panel h3{font-family:var(--disp);font-size:16.5px;margin:18px 0 9px;display:flex;align-items:center;gap:9px;color:#1a1a1a}
+.list{list-style:none}
+.list li{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:#3d3d3d;padding:5px 0;line-height:1.45}
+.list li svg{flex:none;margin-top:4px}
+.mat{padding:9px 2px;border-bottom:1px dashed var(--line)}
+.mat:last-child{border-bottom:0}
+.mat b{font-size:14px;display:block}
+.mat span{font-size:12.5px;color:var(--sub)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chip{border:1.5px solid var(--gold);background:#fdfbf5;color:#8a7440;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:999px;transition:background .18s,color .18s}
+.chip:hover{background:var(--gold);color:#fff}
+.zone-note{font-size:12.5px;color:var(--sub);margin-top:13px;line-height:1.5}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;display:block;box-shadow:0 6px 16px rgba(60,50,20,.14);transition:transform .35s}
+.gallery img:hover{transform:scale(1.035)}
+
+/* ============ CARROUSEL ============ */
+.carousel{margin-top:28px}
+.car-viewport{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#1a1a1a;box-shadow:var(--shadow)}
+.car-track{display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.car-track img{width:100%;height:100%;object-fit:cover;flex:none;user-select:none}
+.car-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.9);border:0;cursor:pointer;display:grid;place-items:center;color:#7a6430;
+  box-shadow:0 4px 12px rgba(0,0,0,.22);transition:background .2s,color .2s;z-index:2;
+}
+.car-arrow:hover{background:var(--gold);color:#fff}
+.car-arrow.prev{left:10px}.car-arrow.next{right:10px}
+.car-dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:2}
+.dot{width:8px;height:8px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.55);cursor:pointer;transition:width .25s,background .25s}
+.dot.on{width:22px;background:var(--gold)}
+.video-frame{aspect-ratio:16/9;border-radius:18px;overflow:hidden;margin-top:14px;box-shadow:var(--shadow)}
+.video-frame iframe{width:100%;height:100%;border:0;display:block}
+
+/* ============ RÉSEAUX SOCIAUX ============ */
+.socials{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.soc{
+  display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;text-decoration:none;
+  background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff;font-weight:600;font-size:14.5px;
+  box-shadow:var(--shadow);transition:transform .2s,filter .2s;
+}
+.soc:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.soc svg{flex:none}
+.soc .arr{margin-inline-start:auto;transition:transform .2s}
+.soc:hover .arr{transform:translateX(4px)}
+html[dir="rtl"] .soc:hover .arr{transform:translateX(-4px)}
+
+/* ============ CTA WHATSAPP ============ */
+.cta{
+  display:flex;align-items:center;justify-content:center;gap:11px;margin-top:28px;padding:18px 16px;
+  background:var(--wa);color:#2c2c2c;text-decoration:none;border-radius:16px;
+  font-weight:800;font-size:15.5px;letter-spacing:.4px;box-shadow:0 10px 26px rgba(255,193,7,.35);
+  transition:transform .2s;animation:ctaPulse 2.8s ease-in-out infinite;
+}
+.cta:hover{transform:translateY(-2px)}
+@keyframes ctaPulse{0%,100%{box-shadow:0 10px 26px rgba(255,193,7,.3)}50%{box-shadow:0 12px 36px rgba(255,193,7,.6)}}
+
+/* ============ FOOTER ============ */
+footer{margin-top:36px;text-align:center}
+.green-line{height:3px;background:var(--green);border-radius:2px;margin-bottom:16px}
+footer p{font-size:12px;color:var(--sub)}
+.gear{margin-top:8px;background:none;border:0;cursor:pointer;color:#c4bda9;display:inline-grid;place-items:center;padding:6px;border-radius:8px;transition:color .2s,transform .3s}
+.gear:hover{color:var(--gold-d);transform:rotate(60deg)}
+
+/* ============ CHAT MODAL ============ */
+.backdrop{
+  position:fixed;inset:0;background:rgba(24,20,12,.55);z-index:80;display:flex;align-items:center;justify-content:center;
+  padding:16px;opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.backdrop.open{opacity:1;pointer-events:auto}
+.chat{
+  width:min(430px,100%);height:min(680px,88dvh);background:#fff;border-radius:20px;overflow:hidden;
+  display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.35);
+  transform:translateY(16px) scale(.97);transition:transform .28s;
+}
+.backdrop.open .chat{transform:none}
+.chat-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff}
+.chat-av{position:relative;flex:none;width:42px;height:42px;border-radius:50%;background:#1a1a1a;color:var(--gold);display:grid;place-items:center;font-family:var(--disp);font-size:20px;font-weight:700}
+.chat-av .on{position:absolute;bottom:-1px;inset-inline-end:-1px;width:12px;height:12px;border-radius:50%;background:#2ecc71;border:2px solid #fff}
+.chat-tt{flex:1;min-width:0}
+.chat-tt strong{display:block;font-size:14.5px;letter-spacing:.2px}
+.chat-status{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;opacity:.95}
+.pulse{width:7px;height:7px;border-radius:50%;background:#48e07d;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(72,224,125,.55)}60%{box-shadow:0 0 0 6px rgba(72,224,125,0)}}
+.chat-actions{display:flex;gap:7px}
+.chat-actions button{width:32px;height:32px;border:0;border-radius:9px;background:rgba(255,255,255,.16);color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .2s}
+.chat-actions button:hover{background:rgba(255,255,255,.3)}
+.chat-body{flex:1;overflow-y:auto;background:#f7f5f0;padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:84%;padding:10px 13px;border-radius:15px;font-size:14px;line-height:1.5;white-space:pre-line;box-shadow:0 1px 2px rgba(0,0,0,.06);animation:pop .25s}
+@keyframes pop{from{opacity:0;transform:translateY(7px) scale(.97)}}
+.msg.bot{align-self:flex-start;background:#fff;border-radius:15px 15px 15px 4px}
+.msg.user{align-self:flex-end;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff;border-radius:15px 15px 4px 15px}
+.msg b{color:var(--gold-d)}
+.msg.user b{color:#fff}
+.typing{display:inline-flex;gap:4px;padding:14px 16px}
+.typing i{width:7px;height:7px;border-radius:50%;background:#b9ab8a;animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}
+@keyframes blink{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-self:stretch;margin-top:2px}
+@media(max-width:480px){.opts{grid-template-columns:1fr}}
+.opt{
+  min-height:46px;border-radius:12px;cursor:pointer;background:#fff;border:1.5px solid var(--gold);
+  color:var(--gold-d);font-weight:600;font-size:13.5px;padding:11px 10px;transition:background .18s,color .18s,transform .18s;
+}
+.opt:hover{background:var(--gold);color:#fff;transform:translateY(-1px)}
+.opt.wide{grid-column:1/-1}
+.opts.done .opt{opacity:.45;pointer-events:none}
+.chat-input{display:flex;gap:8px;padding:10px;background:#fff;border-top:1px solid var(--line)}
+.chat-input input{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:11px 14px;font:inherit;font-size:14px;background:#fbfaf7;min-width:0}
+.chat-input input:focus{border-color:var(--gold);outline:none}
+.chat-input button{width:44px;height:44px;flex:none;border:0;border-radius:12px;background:var(--gold);color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .2s}
+.chat-input button:hover{background:var(--gold-d)}
+
+/* ============ ADMIN ============ */
+.admin{
+  position:fixed;top:0;bottom:0;inset-inline-end:0;width:min(440px,100%);background:#fff;z-index:90;
+  transform:translateX(var(--off,105%));transition:transform .35s cubic-bezier(.4,0,.2,1);
+  overflow-y:auto;box-shadow:-20px 0 60px rgba(0,0,0,.2);
+}
+html[dir="rtl"] .admin{--off:-105%}
+.admin.open{transform:translateX(0)}
+.admin-head{position:sticky;top:0;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;z-index:2}
+.admin-head h2{font-family:var(--disp);font-size:18px;font-weight:700}
+.admin-head button{background:rgba(255,255,255,.18);border:0;color:#fff;width:32px;height:32px;border-radius:9px;cursor:pointer;display:grid;place-items:center}
+.admin-body{padding:18px}
+.admin-note{font-size:12.5px;color:var(--sub);margin-bottom:16px;line-height:1.5}
+.admin label{display:block;font-size:12px;font-weight:700;color:#5c5c5c;margin:12px 0 0;letter-spacing:.02em}
+.admin input,.admin textarea{
+  width:100%;margin-top:5px;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;
+  font:inherit;font-size:13.5px;background:#fbfaf7;
+}
+.admin input:focus,.admin textarea:focus{border-color:var(--gold);outline:none}
+.admin textarea{resize:vertical;font-family:ui-monospace,Consolas,monospace;font-size:12px}
+.admin-btns{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:20px}
+.btn{border:0;border-radius:11px;padding:13px;font-weight:700;font-size:13.5px;cursor:pointer;transition:filter .2s,transform .2s}
+.btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff}
+.btn.dark{background:#2c2c2c;color:#fff}
+.btn.ghost{background:#fff;color:#a33;border:1.5px solid #ecc}
+.leads-box,.deploy{margin-top:22px;background:#faf8f2;border:1px solid var(--line);border-radius:13px;padding:15px}
+.leads-box h3,.deploy h3{font-family:var(--disp);font-size:15px;margin-bottom:9px}
+.leads-box ul{list-style:none;font-size:12.5px;color:#4a4a4a}
+.leads-box li{padding:7px 0;border-bottom:1px dashed var(--line);line-height:1.45}
+.leads-box li:last-child{border-bottom:0}
+.deploy ol{margin-inline-start:18px;font-size:12.5px;color:#4a4a4a;line-height:1.7}
+.deploy code{background:#efe9da;padding:1px 6px;border-radius:5px;font-size:11.5px}
+
+/* ============ TOAST ============ */
+.toast{
+  position:fixed;bottom:26px;left:50%;transform:translate(-50%,16px);z-index:120;
+  background:#2c2c2c;color:#fff;padding:11px 20px;border-radius:999px;font-size:13px;font-weight:600;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:0 10px 26px rgba(0,0,0,.3);
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ============ REVEAL & MOTION ============ */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== BARRE DE DRAPEAUX ===== -->
+<nav class="flags" aria-label="Langue / Language / اللغة / Idioma">
+  <button type="button" class="flag" data-lang="ar" aria-label="العربية" title="العربية">
+    <svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#c1272d"/><path d="M30 9 36.47 28.9 19.54 16.6h20.92L23.53 28.9Z" fill="none" stroke="#006233" stroke-width="1.7"/></svg>
+  </button>
+  <button type="button" class="flag" data-lang="en" aria-label="English" title="English">
+    <svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0 0 60 40M60 0 0 40" stroke="#fff" stroke-width="8"/><path d="M0 0 60 40M60 0 0 40" stroke="#C8102E" stroke-width="3"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7"/></svg>
+  </button>
+  <button type="button" class="flag" data-lang="fr" aria-label="Français" title="Français">
+    <svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#0055A4"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#EF4135"/></svg>
+  </button>
+  <button type="button" class="flag" data-lang="es" aria-label="Español" title="Español">
+    <svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#AA151B"/><rect y="10" width="60" height="20" fill="#F1BF00"/></svg>
+  </button>
+</nav>
+
+<main class="wrap">
+  <!-- ===== PROFIL ===== -->
+  <header class="hero-band reveal" aria-hidden="true"></header>
+  <div class="avatar-wrap reveal"><div class="avatar" id="avatar"></div></div>
+
+  <section class="profile reveal">
+    <h1 id="pName">El Hossein El Ghazy</h1>
+    <p class="tagline" id="pTag"></p>
+    <p class="desc" id="pDesc"></p>
+    <span class="loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="pLoc"></span></span>
+  </section>
+
+  <!-- ===== 3 BOUTONS ===== -->
+  <section class="sq-row reveal" aria-label="Contact">
+    <button type="button" class="sq" id="btnChat">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-9.2L5.5 21.4A.6.6 0 0 1 4.5 20.9V17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/></svg>
+    </button>
+    <a class="sq" id="btnTel" href="tel:">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.02z"/></svg>
+    </a>
+    <a class="sq" id="btnWa" href="#" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
+  </section>
+
+  <!-- ===== ACCORDÉONS ===== -->
+  <section class="accs reveal">
+    <div class="acc">
+      <button type="button" class="acc-h" id="hAbout" aria-expanded="false" aria-controls="bAbout">
+        <svg class="ic" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <span class="lbl" id="lblAbout"></span>
+        <svg class="chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="acc-b" id="bAbout" role="region" aria-labelledby="hAbout"><div class="acc-inner"><div class="panel" id="panelAbout"></div></div></div>
+    </div>
+    <div class="acc">
+      <button type="button" class="acc-h" id="hInsp" aria-expanded="false" aria-controls="bInsp">
+        <svg class="ic" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <span class="lbl" id="lblInsp"></span>
+        <svg class="chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="acc-b" id="bInsp" role="region" aria-labelledby="hInsp"><div class="acc-inner"><div class="panel"><div class="gallery" id="gallery"></div></div></div></div>
+    </div>
+    <div class="acc">
+      <button type="button" class="acc-h" id="hMat" aria-expanded="false" aria-controls="bMat">
+        <svg class="ic" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 6-10 6L2 8Z"/><path d="m2 14 10 6 10-6"/></svg>
+        <span class="lbl" id="lblMat"></span>
+        <svg class="chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="acc-b" id="bMat" role="region" aria-labelledby="hMat"><div class="acc-inner"><div class="panel" id="panelMats"></div></div></div>
+    </div>
+    <div class="acc">
+      <button type="button" class="acc-h" id="hZone" aria-expanded="false" aria-controls="bZone">
+        <svg class="ic" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <span class="lbl" id="lblZone"></span>
+        <svg class="chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="acc-b" id="bZone" role="region" aria-labelledby="hZone"><div class="acc-inner"><div class="panel" id="panelZone"></div></div></div>
+    </div>
+  </section>
+
+  <div class="orn" aria-hidden="true">✦ ✦ ✦</div>
+
+  <!-- ===== CARROUSEL ===== -->
+  <section class="carousel reveal" aria-label="Diaporama">
+    <div class="car-viewport" id="carViewport">
+      <div class="car-track" id="carTrack"></div>
+      <button type="button" class="car-arrow prev" id="carPrev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+      <button type="button" class="car-arrow next" id="carNext"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+      <div class="car-dots" id="carDots"></div>
+    </div>
+    <div class="video-wrap" id="videoWrap" hidden></div>
+  </section>
+
+  <!-- ===== RÉSEAUX ===== -->
+  <section class="socials reveal">
+    <a class="soc" id="soWeb" href="#" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg>
+      <span id="lblWeb"></span>
+      <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+    </a>
+    <a class="soc" id="soIg" href="#" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9c-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2ZM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84Zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4Zm7.85-10.4a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44Z"/></svg>
+      <span id="lblIg"></span>
+      <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+    </a>
+    <a class="soc" id="soYt" href="#" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+      <span id="lblYt"></span>
+      <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+    </a>
+    <a class="soc" id="soFb" href="#" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/></svg>
+      <span id="lblFb"></span>
+      <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+    </a>
+    <a class="soc" id="soTt" href="#" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.1 2.65 1.63 4.21 1.66v3.37c-1.17.03-2.34-.17-3.42-.6-1.08-.43-2.06-1.06-2.93-1.83v7.05c0 .09-.01.18-.02.27-.13 1.54-.79 3-1.86 4.14-1.06 1.14-2.49 1.9-4.03 2.17-1.54.27-3.15.04-4.55-.67-1.4-.71-2.54-1.87-3.24-3.29-.7-1.42-.92-3.04-.63-4.59.29-1.55 1.07-2.97 2.23-4.05 1.16-1.08 2.65-1.77 4.22-1.97.14-.02.29-.03.44-.04v3.46c-.13.04-.26.08-.39.13-.83.32-1.53.92-1.98 1.7-.45.78-.62 1.7-.48 2.59.13.89.56 1.71 1.22 2.33.66.62 1.51 1 2.42 1.09.91.09 1.83-.12 2.61-.59.78-.47 1.38-1.18 1.71-2.03.33-.85.37-1.78.11-2.65-.25-.87-.78-1.64-1.51-2.19-.48-.36-1.03-.62-1.61-.76V.02h.02z"/></svg>
+      <span id="lblTt"></span>
+      <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+    </a>
+  </section>
+
+  <!-- ===== CTA WHATSAPP ===== -->
+  <a class="cta reveal" id="ctaWa" href="#" target="_blank" rel="noopener">
+    <svg width="23" height="23" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    <span id="ctaTxt"></span>
+  </a>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="reveal">
+    <div class="green-line" aria-hidden="true"></div>
+    <p id="footTxt"></p>
+    <button type="button" class="gear" id="adminGear" aria-label="Administration">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+    </button>
+  </footer>
+</main>
+
+<!-- ===== MODAL CHAT ===== -->
+<div class="backdrop" id="chatBackdrop">
+  <div class="chat" role="dialog" aria-modal="true" aria-labelledby="chatTitle">
+    <header class="chat-head">
+      <div class="chat-av" aria-hidden="true">M<span class="on"></span></div>
+      <div class="chat-tt">
+        <strong id="chatTitle"></strong>
+        <span class="chat-status"><span class="pulse" aria-hidden="true"></span><span id="chatStatus"></span></span>
+      </div>
+      <div class="chat-actions">
+        <button type="button" id="chatReset"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+        <button type="button" id="chatClose"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>
+    </header>
+    <div class="chat-body" id="chatBody" aria-live="polite"></div>
+    <form class="chat-input" id="chatForm">
+      <input type="text" id="chatText" autocomplete="off">
+      <button type="submit" id="chatSend">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 21 23 12 2 3v6.5l14 2.5-14 2.5Z"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== PANNEAU ADMIN ===== -->
+<aside class="admin" id="admin" aria-label="Panneau d’administration">
+  <div class="admin-head">
+    <h2>⚙ Administration</h2>
+    <button type="button" id="adminClose" aria-label="Fermer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="admin-body">
+    <p class="admin-note">Modifiez vos informations, puis sauvegardez, prévisualisez ou téléchargez le fichier final prêt à publier.</p>
+    <label>Nom complet<input id="fName" type="text"></label>
+    <label>Téléphone (format international)<input id="fPhone" type="text" placeholder="+212 6 …"></label>
+    <label>WhatsApp (indicatif + numéro, chiffres uniquement)<input id="fWa" type="text" placeholder="2126…"></label>
+    <label>Avatar — URL de l’image (optionnel)<input id="fAvatar" type="text" placeholder="https://…"></label>
+    <label>Vidéo YouTube — ID (optionnel)<input id="fYt" type="text" placeholder="ex. dQw4w9WgXcQ"></label>
+    <label>Site web<input id="fWeb" type="text"></label>
+    <label>Instagram<input id="fIg" type="text"></label>
+    <label>YouTube<input id="fYtLink" type="text"></label>
+    <label>Facebook<input id="fFb" type="text"></label>
+    <label>TikTok<input id="fTt" type="text"></label>
+    <label>Images du carrousel — une URL par ligne<textarea id="fCar" rows="4"></textarea></label>
+    <label>Images de la galerie (4 max) — une URL par ligne<textarea id="fGal" rows="4"></textarea></label>
+
+    <div class="admin-btns">
+      <button type="button" class="btn gold" id="btnSave">💾 Sauvegarder</button>
+      <button type="button" class="btn gold" id="btnPrev">👁 Aperçu</button>
+      <button type="button" class="btn dark" id="btnDl">⬇ Télécharger HTML</button>
+      <button type="button" class="btn ghost" id="btnRst">✕ Réinitialiser</button>
+    </div>
+
+    <div class="leads-box">
+      <h3>📥 Demandes reçues <small id="leadsCount" style="font-weight:400;color:#8a8a8a"></small></h3>
+      <ul id="leadsList"></ul>
+    </div>
+
+    <div class="deploy">
+      <h3>🚀 Publier avec GitHub + Vercel</h3>
+      <ol>
+        <li>Cliquez sur <b>Télécharger HTML</b> pour obtenir votre fichier à jour.</li>
+        <li>Créez un dépôt sur <b>github.com</b>, puis <b>Add file → Upload files</b> et nommez le fichier <code>index.html</code>.</li>
+        <li>Sur <b>vercel.com</b> : <b>New Project</b> → importez le dépôt → <b>Deploy</b>.</li>
+        <li>Votre carte est en ligne 🎉 Pour toute mise à jour, remplacez <code>index.html</code> dans le dépôt : Vercel actualise le site automatiquement.</li>
+      </ol>
+    </div>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+'use strict';
+/* ================= HELPERS ================= */
+const $=(s,c=document)=>c.querySelector(s);
+const $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const store={
+  get(k,f){try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch(e){return f}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},
+  del(k){try{localStorage.removeItem(k)}catch(e){}}
+};
+const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=s=>String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const IC={diamond:'<svg width="9" height="9" viewBox="0 0 10 10" fill="#c9a961" aria-hidden="true"><path d="M5 0 10 5 5 10 0 5Z"/></svg>'};
+
+/* Générateur d’images "marbre" (SVG data-URI, aucune dépendance) */
+function MARBLE(w,h,c1,c2,vein,label,sub){
+  const V=[
+    'M-'+w*.06+' '+h*.22+' C '+w*.2+' '+h*.1+' '+w*.34+' '+h*.42+' '+w*.55+' '+h*.3+' S '+w*.9+' '+h*.12+' '+w*1.06+' '+h*.34,
+    'M-'+w*.05+' '+h*.55+' C '+w*.18+' '+h*.48+' '+w*.3+' '+h*.75+' '+w*.52+' '+h*.62+' S '+w*.85+' '+h*.5+' '+w*1.05+' '+h*.68,
+    'M'+w*.15+' -'+h*.05+' C '+w*.1+' '+h*.2+' '+w*.28+' '+h*.35+' '+w*.22+' '+h*.6+' S '+w*.3+' '+h*.95+' '+w*.2+' '+h*1.06,
+    'M'+w*.7+' -'+h*.04+' C '+w*.62+' '+h*.22+' '+w*.8+' '+h*.4+' '+w*.72+' '+h*.66+' S '+w*.8+' '+h*.98+' '+w*.72+' '+h*1.05
+  ];
+  let s="<svg xmlns='http://www.w3.org/2000/svg' width='"+w+"' height='"+h+"' viewBox='0 0 "+w+" "+h+"'>"
+    +"<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='"+c1+"'/><stop offset='1' stop-color='"+c2+"'/></linearGradient></defs>"
+    +"<rect width='"+w+"' height='"+h+"' fill='url(#g)'/>"
+    +"<g fill='none' stroke='"+vein+"'>"
+    +"<path d='"+V[0]+"' stroke-width='10' stroke-opacity='.12'/>"
+    +"<path d='"+V[0]+"' stroke-width='3.5' stroke-opacity='.55'/>"
+    +"<path d='"+V[1]+"' stroke-width='2.4' stroke-opacity='.4'/>"
+    +"<path d='"+V[2]+"' stroke-width='1.5' stroke-opacity='.35'/>"
+    +"<path d='"+V[3]+"' stroke-width='1.2' stroke-opacity='.3'/></g>";
+  if(label){
+    s+="<rect x='0' y='"+(h-88)+"' width='"+w+"' height='88' fill='rgba(15,15,15,.38)'/>"
+     +"<text x='"+w/2+"' y='"+(h-46)+"' text-anchor='middle' font-family='Georgia,serif' font-size='"+Math.round(w/26)+"' fill='#ffffff' letter-spacing='6'>"+label+"</text>";
+    if(sub) s+="<text x='"+w/2+"' y='"+(h-18)+"' text-anchor='middle' font-family='Georgia,serif' font-size='"+Math.round(w/48)+"' fill='#c9a961' letter-spacing='4'>"+sub+"</text>";
+  }
+  return "data:image/svg+xml,"+encodeURIComponent(s+"</svg>");
+}
+
+/* ================= DONNÉES ÉDITABLES (régénérées à l’export) ================= */
+/*BIO_DATA_START*/
+let BIO_DATA = {
+  name:'El Hossein El Ghazy',
+  phone:'+212 661-234567',
+  whatsapp:'212661234567',
+  avatar:'',
+  youtube:'',
+  links:{
+    web:'https://www.elghazy-marbre.ma',
+    ig:'https://www.instagram.com/elghazy.marbre',
+    yt:'https://www.youtube.com/@elghazy.marbre',
+    fb:'https://www.facebook.com/elghazy.marbre',
+    tt:'https://www.tiktok.com/@elghazy.marbre'
+  },
+  carousel:[
+    MARBLE(800,450,'#f5f2ea','#ddd5c4','#a8956f','CALACATTA ORO','ITALIA'),
+    MARBLE(800,450,'#171717','#313131','#f2f0ea','NOIR MARQUINA','ESPAÑA'),
+    MARBLE(800,450,'#e9dcc4','#cbb48e','#a58d64','TRAVERTIN','CLASSICO'),
+    MARBLE(800,450,'#d9a441','#8a5a1e','#f3d695','ONYX MIEL','ORIENT'),
+    MARBLE(800,450,'#a7adb3','#6a7076','#dbe0e4','GRANIT KASHMIR','INDIA'),
+    MARBLE(800,450,'#24443a','#0f241d','#c9a961','VERT ÉMERAUDE','BRASIL')
+  ],
+  gallery:[
+    MARBLE(600,600,'#f4f3ef','#dddad2','#b8b2a4','CARRARA',''),
+    MARBLE(600,600,'#1c1c1c','#333333','#efece4','MARQUINA',''),
+    MARBLE(600,600,'#d3a04a','#8f5c1c','#f0cf8e','ONYX',''),
+    MARBLE(600,600,'#e6d7bd','#c6ad83','#9d8256','TRAVERTIN','')
+  ]
+};
+/*BIO_DATA_END*/
+const BIO_DEFAULT=JSON.parse(JSON.stringify(BIO_DATA));
+
+/* ================= TRADUCTIONS ================= */
+const I18N={
+fr:{dir:'ltr',htmlLang:'fr',
+  docTitle:'El Hossein El Ghazy · Marbrier & Décorateur à Tétouan',
+  tagline:'Marbrier Professionnel & Décorateur à Tétouan',
+  desc:'Marbre, granit & décoration sur mesure. Plus de 15 ans de savoir-faire artisanal au nord du Maroc.',
+  loc:'Tétouan · Maroc',
+  aboutBtn:'À propos de El Hossein El Ghazy',
+  aboutIntro:'Artisan marbrier établi à Tétouan, je transforme la pierre naturelle en réalisations durables : sols, escaliers, salles de bain, cuisines et pièces décoratives. Mon atelier allie les techniques traditionnelles marocaines aux finitions contemporaines les plus exigeantes.',
+  servicesHead:'Mes services',
+  services:['Pose de marbre italien & espagnol','Plans de travail de cuisine','Salles de bain tout marbre','Escaliers, sols & façades','Décoration, zellige & mosaïque','Gravure & calligraphie sur pierre'],
+  commitHead:'Mes engagements',
+  commits:['Devis gratuit & conseils personnalisés','Travail soigné, délais respectés','Matériaux premium sélectionnés à la main','Garantie & suivi après-vente'],
+  inspBtn:'Inspiration',matBtn:'Matériels',
+  mats:[['Marbre italien','Calacatta · Carrare · Statuario'],['Marbre espagnol','Marquina Noir · Crema Levante'],['Granit','Kashmir · Noir Absolut · Gris Perla'],['Onyx','Miel · Vert · Blanc veiné'],['Quartz','Silestone · Caesarstone'],['Travertin','Classique · Noce · Silver']],
+  zoneBtn:'Zone d’intervention',
+  zoneNote:'Déplacement gratuit pour tout devis dans le nord du Maroc.',
+  cities:['Tétouan','Tanger','Chefchaouen','Ceuta','Martil','M’diq','Fnideq','Larache','Ksar El Kébir'],
+  soc:{web:'Site web',ig:'Instagram',yt:'YouTube',fb:'Facebook',tt:'TikTok'},
+  cta:'DEVIS GRATUIT SUR WHATSAPP',
+  foot:'Copyright © 2026 El Hossein El Ghazy',
+  aria:{chat:'Ouvrir l’assistant',tel:'Appeler',wa:'Écrire sur WhatsApp',send:'Envoyer',close:'Fermer',reset:'Réinitialiser la conversation',prev:'Image précédente',next:'Image suivante'},
+  chat:{title:'Assistant de El Hossein',online:'En ligne',ph:'Écrivez votre message…',
+    greet:'Bonjour 👋 Je suis l’assistant de El Hossein El Ghazy, marbrier à Tétouan. Comment puis-je vous aider ?',
+    menu:[['devis','Demander un devis'],['services','Voir les services'],['wa','Parler sur WhatsApp']],
+    qName:'Avec plaisir ! Pour commencer, quel est votre nom ?',
+    helloName:n=>'Enchanté '+n+' ! Quel service souhaitez-vous ?',
+    qService:'Quel service souhaitez-vous ?',qCity:'Dans quelle ville se trouve votre projet ?',
+    qArea:'Quelle est la superficie approximative ?',qTime:'Quand souhaitez-vous démarrer les travaux ?',
+    qPhone:'Parfait. Quel est votre numéro de téléphone ? (ex. 06 12 34 56 78)',
+    phoneBad:'Ce numéro semble invalide 😅 Merci d’entrer un numéro valide (8 à 15 chiffres).',
+    servicesHead:'Voici nos services :',back:'Retour au menu',menuAgain:'Que puis-je faire d’autre pour vous ?',
+    waOpened:'Je vous ouvre WhatsApp 👌 Envoyez votre message, nous répondons très vite.',
+    waDirect:'Bonjour, je souhaite plus d’informations sur vos services de marbrerie.',
+    toMenu:'↩ Retour au menu',
+    opts:{service:['Marbre','Granit','Décoration','Salle de bain','Cuisine','Autre'],
+      city:['Tétouan','Tanger','Chefchaouen','Autre ville'],
+      area:['Moins de 10 m²','10 à 30 m²','30 à 50 m²','Plus de 50 m²','Je ne sais pas'],
+      time:['Dès que possible','Dans 1 mois','Dans 1 à 3 mois','Je me renseigne']},
+    summaryHead:'Récapitulatif de votre demande',
+    labels:{name:'Nom',service:'Service',city:'Ville',area:'Superficie',time:'Délai',phone:'Téléphone'},
+    confirm:'Tout est correct ? Je peux envoyer cette demande sur WhatsApp maintenant.',
+    yes:'Oui, envoyer sur WhatsApp',modify:'Modifier',
+    modifyHead:'Que souhaitez-vous modifier ?',backSum:'↩ Retour au résumé',
+    sent:'✅ Votre demande est prête ! WhatsApp s’ouvre pour l’envoyer. Nous vous répondrons très vite.',
+    noMatch:'Je n’ai pas bien compris 🤔 Utilisez les boutons ou reformulez votre réponse.',
+    waText:d=>'*Nouvelle demande de devis*\n\n*Nom:* '+d.name+'\n*Service:* '+d.service+'\n*Ville:* '+d.city+'\n*Superficie:* '+d.area+'\n*Délai:* '+d.time+'\n*Téléphone:* '+d.phone+'\n\nEnvoyé depuis la carte bio de El Hossein El Ghazy'}
+},
+es:{dir:'ltr',htmlLang:'es',
+  docTitle:'El Hossein El Ghazy · Marmolista y Decorador en Tetuán',
+  tagline:'Marmolista Profesional y Decorador en Tetuán',
+  desc:'Mármol, granito y decoración a medida. Más de 15 años de saber hacer artesanal en el norte de Marruecos.',
+  loc:'Tetuán · Marruecos',
+  aboutBtn:'Sobre El Hossein El Ghazy',
+  aboutIntro:'Artesano marmolista establecido en Tetuán, transformo la piedra natural en obras duraderas: suelos, escaleras, baños, cocinas y piezas decorativas. Mi taller combina las técnicas tradicionales marroquíes con los acabados contemporáneos más exigentes.',
+  servicesHead:'Mis servicios',
+  services:['Instalación de mármol italiano y español','Encimeras de cocina','Baños completos en mármol','Escaleras, suelos y fachadas','Decoración, zellige y mosaico','Grabado y caligrafía en piedra'],
+  commitHead:'Mis compromisos',
+  commits:['Presupuesto gratuito y asesoramiento personalizado','Trabajo esmerado y plazos cumplidos','Materiales premium seleccionados a mano','Garantía y seguimiento postventa'],
+  inspBtn:'Inspiración',matBtn:'Materiales',
+  mats:[['Mármol italiano','Calacatta · Carrara · Estatuario'],['Mármol español','Marquina Negro · Crema Levante'],['Granito','Cachemira · Negro Absoluto · Gris Perla'],['Ónix','Miel · Verde · Blanco veteado'],['Cuarzo','Silestone · Caesarstone'],['Travertino','Clásico · Noce · Silver']],
+  zoneBtn:'Zona de intervención',
+  zoneNote:'Desplazamiento gratuito para presupuestos en el norte de Marruecos.',
+  cities:['Tetuán','Tánger','Chefchaouen','Ceuta','Martil','M’diq','Fnideq','Larache','Ksar El Kébir'],
+  soc:{web:'Sitio web',ig:'Instagram',yt:'YouTube',fb:'Facebook',tt:'TikTok'},
+  cta:'PRESUPUESTO GRATIS POR WHATSAPP',
+  foot:'Copyright © 2026 El Hossein El Ghazy',
+  aria:{chat:'Abrir el asistente',tel:'Llamar',wa:'Escribir por WhatsApp',send:'Enviar',close:'Cerrar',reset:'Reiniciar la conversación',prev:'Anterior',next:'Siguiente'},
+  chat:{title:'Asistente de El Hossein',online:'En línea',ph:'Escriba su mensaje…',
+    greet:'¡Hola! 👋 Soy el asistente de El Hossein El Ghazy, marmolista en Tetuán. ¿Cómo puedo ayudarle?',
+    menu:[['devis','Pedir un presupuesto'],['services','Ver los servicios'],['wa','Hablar por WhatsApp']],
+    qName:'¡Con mucho gusto! Para empezar, ¿cuál es su nombre?',
+    helloName:n=>'¡Encantado, '+n+'! ¿Qué servicio desea?',
+    qService:'¿Qué servicio desea?',qCity:'¿En qué ciudad se encuentra su proyecto?',
+    qArea:'¿Cuál es la superficie aproximada?',qTime:'¿Cuándo desea empezar las obras?',
+    qPhone:'Perfecto. ¿Cuál es su número de teléfono? (ej. 06 12 34 56 78)',
+    phoneBad:'Este número no parece válido 😅 Introduzca un número válido (8 a 15 cifras).',
+    servicesHead:'Estos son nuestros servicios :',back:'Volver al menú',menuAgain:'¿Qué más puedo hacer por usted?',
+    waOpened:'Le abro WhatsApp 👌 Envíe su mensaje, respondemos muy rápido.',
+    waDirect:'Hola, deseo más información sobre sus servicios de marmolería.',
+    toMenu:'↩ Volver al menú',
+    opts:{service:['Mármol','Granito','Decoración','Baño','Cocina','Otro'],
+      city:['Tetuán','Tánger','Chefchaouen','Otra ciudad'],
+      area:['Menos de 10 m²','10 a 30 m²','30 a 50 m²','Más de 50 m²','No lo sé'],
+      time:['Lo antes posible','En 1 mes','En 1 a 3 meses','Estoy informándome']},
+    summaryHead:'Resumen de su solicitud',
+    labels:{name:'Nombre',service:'Servicio',city:'Ciudad',area:'Superficie',time:'Plazo',phone:'Teléfono'},
+    confirm:'¿Todo correcto? Puedo enviar esta solicitud por WhatsApp ahora.',
+    yes:'Sí, enviar por WhatsApp',modify:'Modificar',
+    modifyHead:'¿Qué desea modificar?',backSum:'↩ Volver al resumen',
+    sent:'✅ ¡Su solicitud está lista! Se abre WhatsApp para enviarla. Le responderemos muy pronto.',
+    noMatch:'No he entendido bien 🤔 Use los botones o reformule su respuesta.',
+    waText:d=>'*Nueva solicitud de presupuesto*\n\n*Nombre:* '+d.name+'\n*Servicio:* '+d.service+'\n*Ciudad:* '+d.city+'\n*Superficie:* '+d.area+'\n*Plazo:* '+d.time+'\n*Teléfono:* '+d.phone+'\n\nEnviado desde la tarjeta bio de El Hossein El Ghazy'}
+},
+en:{dir:'ltr',htmlLang:'en',
+  docTitle:'El Hossein El Ghazy · Marble Craftsman & Decorator in Tetouan',
+  tagline:'Professional Marble Craftsman & Decorator in Tetouan',
+  desc:'Marble, granite & bespoke decoration. Over 15 years of craftsmanship in northern Morocco.',
+  loc:'Tetouan · Morocco',
+  aboutBtn:'About El Hossein El Ghazy',
+  aboutIntro:'A marble craftsman based in Tetouan, I turn natural stone into lasting work: floors, staircases, bathrooms, kitchens and decorative pieces. My workshop blends traditional Moroccan techniques with the most demanding contemporary finishes.',
+  servicesHead:'My services',
+  services:['Italian & Spanish marble installation','Kitchen worktops','Full marble bathrooms','Stairs, floors & facades','Decoration, zellige & mosaic','Stone engraving & calligraphy'],
+  commitHead:'My commitments',
+  commits:['Free quote & personal advice','Neat work, deadlines respected','Hand-picked premium materials','Warranty & after-sales support'],
+  inspBtn:'Inspiration',matBtn:'Materials',
+  mats:[['Italian marble','Calacatta · Carrara · Statuario'],['Spanish marble','Black Marquina · Crema Levante'],['Granite','Kashmir · Absolute Black · Pearl Grey'],['Onyx','Honey · Green · Veined White'],['Quartz','Silestone · Caesarstone'],['Travertine','Classic · Noce · Silver']],
+  zoneBtn:'Service area',
+  zoneNote:'Free travel for quotes anywhere in northern Morocco.',
+  cities:['Tetouan','Tangier','Chefchaouen','Ceuta','Martil','M’diq','Fnideq','Larache','Ksar El Kébir'],
+  soc:{web:'Website',ig:'Instagram',yt:'YouTube',fb:'Facebook',tt:'TikTok'},
+  cta:'FREE QUOTE ON WHATSAPP',
+  foot:'Copyright © 2026 El Hossein El Ghazy',
+  aria:{chat:'Open the assistant',tel:'Call',wa:'Chat on WhatsApp',send:'Send',close:'Close',reset:'Restart conversation',prev:'Previous image',next:'Next image'},
+  chat:{title:'El Hossein’s Assistant',online:'Online',ph:'Type your message…',
+    greet:'Hello 👋 I’m the assistant of El Hossein El Ghazy, marble craftsman in Tetouan. How can I help you?',
+    menu:[['devis','Request a quote'],['services','View services'],['wa','Chat on WhatsApp']],
+    qName:'With pleasure! First, what is your name?',
+    helloName:n=>'Nice to meet you, '+n+'! Which service do you need?',
+    qService:'Which service do you need?',qCity:'In which city is your project?',
+    qArea:'What is the approximate area?',qTime:'When would you like to start?',
+    qPhone:'Great. What is your phone number? (e.g. 06 12 34 56 78)',
+    phoneBad:'That number looks invalid 😅 Please enter a valid number (8–15 digits).',
+    servicesHead:'Here are our services:',back:'Back to menu',menuAgain:'What else can I do for you?',
+    waOpened:'Opening WhatsApp 👌 Send your message, we reply very fast.',
+    waDirect:'Hello, I would like more information about your marble services.',
+    toMenu:'↩ Back to menu',
+    opts:{service:['Marble','Granite','Decoration','Bathroom','Kitchen','Other'],
+      city:['Tetouan','Tangier','Chefchaouen','Another city'],
+      area:['Under 10 m²','10–30 m²','30–50 m²','Over 50 m²','Not sure'],
+      time:['As soon as possible','In 1 month','In 1–3 months','Just enquiring']},
+    summaryHead:'Summary of your request',
+    labels:{name:'Name',service:'Service',city:'City',area:'Area',time:'Timeframe',phone:'Phone'},
+    confirm:'All correct? I can send this request on WhatsApp now.',
+    yes:'Yes, send on WhatsApp',modify:'Edit',
+    modifyHead:'What would you like to change?',backSum:'↩ Back to summary',
+    sent:'✅ Your request is ready! WhatsApp will open to send it. We’ll reply very soon.',
+    noMatch:'I didn’t quite get that 🤔 Use the buttons or rephrase your answer.',
+    waText:d=>'*New quote request*\n\n*Name:* '+d.name+'\n*Service:* '+d.service+'\n*City:* '+d.city+'\n*Area:* '+d.area+'\n*Timeframe:* '+d.time+'\n*Phone:* '+d.phone+'\n\nSent from El Hossein El Ghazy’s bio card'}
+},
+ar:{dir:'rtl',htmlLang:'ar',
+  docTitle:'الحسين الغازي · معلم رخام وديكور بتطوان',
+  tagline:'معلّم رخام ومحترف ديكور في تطوان',
+  desc:'رخام وغرانيت وديكور حسب الطلب. خبرة حرفية تفوق 15 عاماً في شمال المغرب.',
+  loc:'تطوان · المغرب',
+  aboutBtn:'حول الحسين الغازي',
+  aboutIntro:'حرفي رخام مقيم في تطوان، أحوّل الحجر الطبيعي إلى إنجازات متينة: أرضيات، سلالم، حمامات، مطابخ وقطع ديكورية. تجمع ورشتي بين التقنيات المغربية التقليدية واللمسات العصرية الراقية.',
+  servicesHead:'خدماتي',
+  services:['تركيب الرخام الإيطالي والإسباني','أسطح المطابخ','حمامات رخامية كاملة','سلالم وأرضيات وواجهات','ديكور وزليج وفُسيفساء','نقش وخط على الحجر'],
+  commitHead:'التزاماتي',
+  commits:['تقدير مجاني واستشارة شخصية','عمل متقن واحترام الآجال','مواد فاخرة مختارة بعناية','ضمان ومتابعة بعد البيع'],
+  inspBtn:'إلهام',matBtn:'المواد',
+  mats:[['رخام إيطالي','كالاكاتا · كارارا · ستاتوارية'],['رخام إسباني','ماركينا الأسود · كريما ليفانتي'],['غرانيت','كشمير · أسود مطلق · رمادي لؤلؤي'],['أونيكس','عسلي · أخضر · أبيض معروق'],['كوارتز','سيلستون · قيصرستون'],['ترافرتين','كلاسيكي · نوتشي · فضي']],
+  zoneBtn:'منطقة التدخل',
+  zoneNote:'تنقل مجاني للتقدير في شمال المغرب.',
+  cities:['تطوان','طنجة','شفشاون','سبتة','مرتيل','المضيق','الفنيدق','العرائش','القصر الكبير'],
+  soc:{web:'الموقع الإلكتروني',ig:'إنستغرام',yt:'يوتيوب',fb:'فيسبوك',tt:'تيك توك'},
+  cta:'تقدير مجاني عبر واتساب',
+  foot:'Copyright © 2026 El Hossein El Ghazy',
+  aria:{chat:'فتح المساعد',tel:'اتصال',wa:'مراسلة عبر واتساب',send:'إرسال',close:'إغلاق',reset:'إعادة تشغيل المحادثة',prev:'السابق',next:'التالي'},
+  chat:{title:'مساعد الحسين',online:'متصل الآن',ph:'اكتب رسالتك…',
+    greet:'السلام عليكم 👋 أنا مساعد الحسين الغازي، معلم الرخام في تطوان. كيف يمكنني مساعدتك؟',
+    menu:[['devis','طلب تقدير'],['services','عرض الخدمات'],['wa','التواصل عبر واتساب']],
+    qName:'بكل سرور! ما اسمك الكريم؟',
+    helloName:n=>'تشرفنا '+n+'! ما الخدمة التي تريدها؟',
+    qService:'ما الخدمة التي تريدها؟',qCity:'في أي مدينة يوجد مشروعك؟',
+    qArea:'ما هي المساحة التقريبية؟',qTime:'متى ترغب في بدء الأشغال؟',
+    qPhone:'ممتاز. ما هو رقم هاتفك؟ (مثال: 0612345678)',
+    phoneBad:'يبدو الرقم غير صحيح 😅 أدخل رقماً صالحاً (8 إلى 15 خانة).',
+    servicesHead:'هذه خدماتنا:',back:'العودة إلى القائمة',menuAgain:'ماذا يمكنني أن أفعل لك أيضاً؟',
+    waOpened:'سأفتح لك واتساب 👌 أرسل رسالتك وسنرد بسرعة.',
+    waDirect:'السلام عليكم، أرغب في مزيد من المعلومات حول خدمات الرخام.',
+    toMenu:'↩ العودة إلى القائمة',
+    opts:{service:['رخام','غرانيت','ديكور','حمام','مطبخ','أخرى'],
+      city:['تطوان','طنجة','شفشاون','مدينة أخرى'],
+      area:['أقل من 10 م²','10 إلى 30 م²','30 إلى 50 م²','أكثر من 50 م²','لا أدري'],
+      time:['في أقرب وقت','خلال شهر','خلال 1 إلى 3 أشهر','للاستفسار فقط']},
+    summaryHead:'ملخص طلبك',
+    labels:{name:'الاسم',service:'الخدمة',city:'المدينة',area:'المساحة',time:'الموعد',phone:'الهاتف'},
+    confirm:'هل كل شيء صحيح؟ يمكنني إرسال الطلب عبر واتساب الآن.',
+    yes:'نعم، أرسل عبر واتساب',modify:'تعديل',
+    modifyHead:'ماذا تريد أن تعدل؟',backSum:'↩ العودة إلى الملخص',
+    sent:'✅ طلبك جاهز! سيُفتح واتساب لإرساله. سنرد عليك قريباً جداً.',
+    noMatch:'لم أفهم جيداً 🤔 استخدم الأزرار أو أعد صياغة إجابتك.',
+    waText:d=>'*طلب تقدير جديد*\n\n*الاسم:* '+d.name+'\n*الخدمة:* '+d.service+'\n*المدينة:* '+d.city+'\n*المساحة:* '+d.area+'\n*الموعد:* '+d.time+'\n*الهاتف:* '+d.phone+'\n\nأُرسل من بطاقة الحسين الغازي'}
+}};
+
+/* ================= ÉTAT ================= */
+let LANG=store.get('bioLang',null); if(!I18N[LANG])LANG='fr';
+const T=()=>I18N[LANG];
+const draft0=store.get('bioDraft',null); if(draft0)applyDraft(draft0);
+function applyDraft(d){
+  if(d.name)BIO_DATA.name=d.name; if(d.phone)BIO_DATA.phone=d.phone; if(d.whatsapp)BIO_DATA.whatsapp=d.whatsapp;
+  BIO_DATA.avatar=d.avatar||''; BIO_DATA.youtube=d.youtube||'';
+  if(d.links)BIO_DATA.links={...BIO_DATA.links,...d.links};
+  if(d.carousel&&d.carousel.length)BIO_DATA.carousel=d.carousel.slice();
+  if(d.gallery&&d.gallery.length)BIO_DATA.gallery=d.gallery.slice(0,4);
+}
+const KW={
+  devis:['devis','quote','presupuesto','cotiz','تقدير','طلب'],
+  services:['service','servicio','خدم','معلوم'],
+  wa:['whatsapp','واتساب','واتس'],
+  yes:['oui','yes','si','sí','ok','confirm','نعم','ارسل','ارسال','envoyer','send','enviar'],
+  edit:['modif','edit','cambi','change','تعديل','تغيير'],
+  back:['retour','back','volver','رجوع','عودة','القائمة']
+};
+const has=(arr,n)=>arr.some(k=>n.includes(k));
+
+/* ================= SON (Web Audio : C5 → C6, 0.3 s) ================= */
+let audioCtx=null;
+function ding(){try{
+  audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==='suspended')audioCtx.resume();
+  const t=audioCtx.currentTime,o=audioCtx.createOscillator(),g=audioCtx.createGain();
+  o.type='sine';
+  o.frequency.setValueAtTime(523.25,t);
+  o.frequency.exponentialRampToValueAtTime(1046.5,t+0.16);
+  g.gain.setValueAtTime(0.0001,t);
+  g.gain.exponentialRampToValueAtTime(0.11,t+0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001,t+0.3);
+  o.connect(g);g.connect(audioCtx.destination);o.start(t);o.stop(t+0.32);
+}catch(e){}}
+
+/* ================= RENDU ================= */
+function buildAbout(){const t=T();
+  $('#panelAbout').innerHTML='<p class="intro">'+esc(t.aboutIntro)+'</p>'
+   +'<h3>'+IC.diamond+' '+esc(t.servicesHead)+'</h3><ul class="list">'+t.services.map(s=>'<li>'+IC.diamond+'<span>'+esc(s)+'</span></li>').join('')+'</ul>'
+   +'<h3>'+IC.diamond+' '+esc(t.commitHead)+'</h3><ul class="list">'+t.commits.map(s=>'<li>'+IC.diamond+'<span>'+esc(s)+'</span></li>').join('')+'</ul>';}
+function buildMats(){$('#panelMats').innerHTML=T().mats.map(m=>'<div class="mat"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span></div>').join('');}
+function buildChips(){const t=T();
+  $('#panelZone').innerHTML='<div class="chips">'+t.cities.map(c=>'<span class="chip">'+esc(c)+'</span>').join('')+'</div><p class="zone-note">'+esc(t.zoneNote)+'</p>';}
+function renderGallery(){$('#gallery').innerHTML=BIO_DATA.gallery.slice(0,4).map((s,i)=>'<img src="'+s+'" alt="Inspiration '+(i+1)+'" loading="lazy">').join('');}
+function renderIdentity(){
+  $('#pName').textContent=BIO_DATA.name;
+  $('#avatar').innerHTML=BIO_DATA.avatar?'<img src="'+esc(BIO_DATA.avatar)+'" alt="'+esc(BIO_DATA.name)+'">'
+    :'<div class="av-mark"><span class="av-dot"></span><span class="av-m">M</span></div>';
+  $('#btnTel').href='tel:'+BIO_DATA.phone.replace(/[^\d+]/g,'');
+  const L=BIO_DATA.links;
+  $('#soWeb').href=L.web||'#';$('#soIg').href=L.ig||'#';$('#soYt').href=L.yt||'#';$('#soFb').href=L.fb||'#';$('#soTt').href=L.tt||'#';
+  renderVideo();
+}
+function renderVideo(){const w=$('#videoWrap');
+  if(BIO_DATA.youtube){w.hidden=false;w.innerHTML='<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/'+encodeURIComponent(BIO_DATA.youtube)+'" title="YouTube" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>';}
+  else{w.hidden=true;w.innerHTML='';}}
+function setWaLinks(){const base='https://wa.me/'+BIO_DATA.whatsapp.replace(/\D/g,'');
+  const q=base+'?text='+encodeURIComponent(T().chat.waDirect);
+  $('#btnWa').href=q;$('#ctaWa').href=q;}
+
+function applyLang(lang){
+  LANG=lang;store.set('bioLang',lang);const t=T();
+  document.documentElement.lang=t.htmlLang;document.documentElement.dir=t.dir;
+  document.title=t.docTitle;
+  $$('.flag').forEach(f=>{const on=f.dataset.lang===lang;f.classList.toggle('on',on);f.setAttribute('aria-pressed',on);});
+  $('#pTag').textContent=t.tagline;$('#pDesc').textContent=t.desc;$('#pLoc').textContent=t.loc;
+  $('#lblAbout').textContent=t.aboutBtn;$('#lblInsp').textContent=t.inspBtn;$('#lblMat').textContent=t.matBtn;$('#lblZone').textContent=t.zoneBtn;
+  buildAbout();buildMats();buildChips();
+  $('#lblWeb').textContent=t.soc.web;$('#lblIg').textContent=t.soc.ig;$('#lblYt').textContent=t.soc.yt;$('#lblFb').textContent=t.soc.fb;$('#lblTt').textContent=t.soc.tt;
+  $('#ctaTxt').textContent=t.cta;$('#footTxt').textContent=t.foot;
+  $('#btnChat').setAttribute('aria-label',t.aria.chat);$('#btnTel').setAttribute('aria-label',t.aria.tel);$('#btnWa').setAttribute('aria-label',t.aria.wa);
+  $('#carPrev').setAttribute('aria-label',t.aria.prev);$('#carNext').setAttribute('aria-label',t.aria.next);
+  $('#chatTitle').textContent=t.chat.title;$('#chatStatus').textContent=t.chat.online;
+  $('#chatText').placeholder=t.chat.ph;$('#chatText').setAttribute('aria-label',t.chat.ph);
+  $('#chatSend').setAttribute('aria-label',t.aria.send);$('#chatClose').setAttribute('aria-label',t.aria.close);$('#chatReset').setAttribute('aria-label',t.aria.reset);
+  setWaLinks();
+}
+
+/* ================= CARROUSEL ================= */
+let carI=0,carN=0,carTimer=null;
+function renderCarousel(){
+  const srcs=BIO_DATA.carousel;carN=srcs.length;carI=0;
+  $('#carTrack').innerHTML=srcs.map((s,i)=>'<img src="'+s+'" alt="Slide '+(i+1)+'" loading="'+(i?'lazy':'eager')+'" draggable="false">').join('');
+  $('#carDots').innerHTML=srcs.map((_,i)=>'<button type="button" class="dot'+(i?'':' on')+'" data-i="'+i+'" aria-label="Slide '+(i+1)+'"></button>').join('');
+  $$('#carDots .dot').forEach(b=>b.addEventListener('click',()=>carGo(+b.dataset.i)));
+  carGo(0);
+}
+function carGo(i){if(!carN)return;carI=((i%carN)+carN)%carN;
+  $('#carTrack').style.transform='translateX('+(-carI*100)+'%)';
+  $$('#carDots .dot').forEach((d,j)=>d.classList.toggle('on',j===carI));}
+function carPlay(){carStop();if(REDUCED||carN<2)return;carTimer=setInterval(()=>carGo(carI+1),5000);}
+function carStop(){if(carTimer){clearInterval(carTimer);carTimer=null;}}
+$('#carPrev').addEventListener('click',()=>{carGo(carI-1);carPlay();});
+$('#carNext').addEventListener('click',()=>{carGo(carI+1);carPlay();});
+const vp=$('#carViewport');
+vp.addEventListener('mouseenter',carStop);vp.addEventListener('mouseleave',carPlay);
+let tX=null;
+vp.addEventListener('touchstart',e=>{tX=e.touches[0].clientX;carStop();},{passive:true});
+vp.addEventListener('touchend',e=>{
+  if(tX!==null){const dx=e.changedTouches[0].clientX-tX;
+    if(Math.abs(dx)>45){dx>0?carGo(carI-1):carGo(carI+1);}}
+  tX=null;carPlay();},{passive:true});
+document.addEventListener('visibilitychange',()=>{document.hidden?carStop():carPlay();});
+
+/* ================= ACCORDÉONS ================= */
+$$('.acc').forEach(acc=>{
+  const h=$('.acc-h',acc),b=$('.acc-b',acc);
+  h.addEventListener('click',()=>{
+    const wasOpen=b.classList.contains('open');
+    $$('.acc-b.open').forEach(o=>{if(o!==b){o.classList.remove('open');$('.acc-h',o.parentElement).setAttribute('aria-expanded','false');}});
+    b.classList.toggle('open',!wasOpen);h.setAttribute('aria-expanded',String(!wasOpen));
+  });
+});
+
+/* ================= CHAT ================= */
+const chat={open:false,started:false,step:'idle',data:{},edit:null,askedService:false};
+let chain=Promise.resolve(),lastFocus=null;
+const chatBody=$('#chatBody');
+function scrollChat(){chatBody.scrollTo({top:chatBody.scrollHeight,behavior:REDUCED?'auto':'smooth'});}
+function addMsg(text,who,html){const m=document.createElement('div');m.className='msg '+who;
+  if(html)m.innerHTML=text;else m.textContent=text;chatBody.appendChild(m);scrollChat();return m;}
+function typingEl(){const d=document.createElement('div');d.className='msg bot typing';d.innerHTML='<i></i><i></i><i></i>';return d;}
+function botMsg(text,{opts=null,html=false}={}){
+  chain=chain.then(()=>new Promise(res=>{
+    const ty=typingEl();chatBody.appendChild(ty);scrollChat();
+    const wait=REDUCED?80:460+Math.min(520,String(text).length*6);
+    setTimeout(()=>{ty.remove();addMsg(text,'bot',html);
+      if(opts){const og=document.createElement('div');og.className='opts';
+        opts.forEach(o=>{const b=document.createElement('button');b.type='button';
+          b.className='opt'+(o.wide?' wide':'');b.textContent=o.label;
+          b.addEventListener('click',()=>{if(og.classList.contains('done'))return;
+            og.classList.add('done');addMsg(o.label,'user');o.cb();});
+          og.appendChild(b);});
+        chatBody.appendChild(og);}
+      scrollChat();ding();res();
+    },wait);
+  }));
+}
+const SEQ=['name','service','city','area','time','phone'];
+function menuOpts(){const c=T().chat;return[
+  {label:c.menu[0][1],cb:()=>askField('name')},
+  {label:c.menu[1][1],cb:showServices},
+  {label:c.menu[2][1],wide:true,cb:goWhatsApp}];}
+function greet(){chat.step='menu';chat.data={};chat.edit=null;chat.askedService=false;botMsg(T().chat.greet,{opts:menuOpts()});}
+function backToMenu(){chat.step='menu';botMsg(T().chat.menuAgain,{opts:menuOpts()});}
+function showServices(){chat.step='menu';const t=T();
+  botMsg(t.chat.servicesHead+'\n\n'+t.services.map(s=>'• '+s).join('\n'),{opts:[{label:t.chat.back,wide:true,cb:backToMenu}]});}
+function openWa(text){window.open('https://wa.me/'+BIO_DATA.whatsapp.replace(/\D/g,'')+(text?'?text='+encodeURIComponent(text):''),'_blank','noopener');}
+function goWhatsApp(){openWa(T().chat.waDirect);botMsg(T().chat.waOpened,{opts:[{label:T().chat.toMenu,wide:true,cb:backToMenu}]});}
+function optButtons(kind){return T().chat.opts[kind].map(o=>({label:o,cb:()=>answer(kind,o)}));}
+function askField(f){const c=T().chat;chat.step=f;
+  if(f==='name')botMsg(c.qName);
+  else if(f==='service'){botMsg((!chat.askedService&&chat.data.name)?c.helloName(chat.data.name):c.qService,{opts:optButtons('service')});chat.askedService=true;}
+  else if(f==='city')botMsg(c.qCity,{opts:optButtons('city')});
+  else if(f==='area')botMsg(c.qArea,{opts:optButtons('area')});
+  else if(f==='time')botMsg(c.qTime,{opts:optButtons('time')});
+  else if(f==='phone')botMsg(c.qPhone);}
+function answer(kind,val){chat.data[kind]=val;
+  if(chat.edit){chat.edit=null;summary();return;}
+  const nxt=SEQ.find(f=>chat.data[f]===undefined);
+  nxt?askField(nxt):summary();}
+function summary(){chat.step='summary';const c=T().chat,d=chat.data;
+  const rows=SEQ.map(k=>'<b>'+c.labels[k]+':</b> '+esc(d[k]||'')).join('\n');
+  botMsg('<b>— '+c.summaryHead+' —</b>\n\n'+rows+'\n\n'+esc(c.confirm),{html:true,
+    opts:[{label:c.yes,cb:sendLead},{label:c.modify,cb:modifyMenu}]});}
+function modifyMenu(){chat.step='modify';const c=T().chat;
+  const opts=SEQ.map(f=>({label:c.labels[f]+' : '+(chat.data[f]||'—'),cb:()=>{chat.edit=f;askField(f);}}));
+  opts.push({label:c.backSum,wide:true,cb:()=>summary()});
+  botMsg(c.modifyHead,{opts});}
+function sendLead(){const c=T().chat,d=chat.data;
+  const leads=store.get('bioLeads',[]);
+  leads.push({ts:new Date().toISOString(),lang:LANG,...d});store.set('bioLeads',leads);
+  openWa(c.waText(d));
+  botMsg(c.sent,{opts:[{label:c.modify,cb:modifyMenu},{label:c.toMenu,wide:true,cb:()=>{chatBody.innerHTML='';greet();}}]});}
+function matchOpt(kind,n){const opts=T().chat.opts[kind];
+  for(const o of opts){const m=norm(o);if(m.length>1&&(n.includes(m)||m.includes(n)))return o;}
+  if(/^\d$/.test(n)){const i=+n-1;if(opts[i])return opts[i];}
+  return null;}
+function route(text){const c=T().chat,n=norm(text);
+  switch(chat.step){
+    case 'menu':
+    case 'servicesView':
+      if(has(KW.devis,n))askField('name');
+      else if(has(KW.services,n))showServices();
+      else if(has(KW.wa,n))goWhatsApp();
+      else botMsg(c.noMatch,{opts:menuOpts()});
+      break;
+    case 'name':text.length>=2?answer('name',text):botMsg(c.qName);break;
+    case 'service':case 'city':case 'area':case 'time':{
+      const m=matchOpt(chat.step,n);
+      m?answer(chat.step,m):botMsg(c.noMatch,{opts:optButtons(chat.step)});break;}
+    case 'phone':{
+      const digs=text.replace(/\D/g,'');
+      (digs.length>=8&&digs.length<=15)?answer('phone',text):botMsg(c.phoneBad);break;}
+    case 'summary':
+      if(has(KW.yes,n))sendLead();
+      else if(has(KW.edit,n))modifyMenu();
+      else botMsg(c.confirm,{opts:[{label:c.yes,cb:sendLead},{label:c.modify,cb:modifyMenu}]});
+      break;
+    case 'modify':{
+      if(has(KW.back,n)){summary();break;}
+      const hit=SEQ.map(f=>({f,l:norm(c.labels[f])})).find(x=>n.includes(x.l)||x.l.includes(n));
+      if(hit){chat.edit=hit.f;askField(hit.f);}else botMsg(c.noMatch);break;}
+    default:chat.step='menu';botMsg(c.greet,{opts:menuOpts()});
+  }}
+$('#chatForm').addEventListener('submit',e=>{
+  e.preventDefault();const v=$('#chatText').value.trim();if(!v)return;
+  $('#chatText').value='';addMsg(v,'user');route(v);});
+$('#chatReset').addEventListener('click',()=>{chatBody.innerHTML='';greet();});
+$('#chatClose').addEventListener('click',closeChat);
+$('#chatBackdrop').addEventListener('click',e=>{if(e.target.id==='chatBackdrop')closeChat();});
+function openChat(){$('#chatBackdrop').classList.add('open');chat.open=true;lastFocus=document.activeElement;
+  setTimeout(()=>$('#chatText').focus(),150);
+  if(!chat.started||!chatBody.children.length){chat.started=true;chatBody.innerHTML='';greet();}}
+function closeChat(){$('#chatBackdrop').classList.remove('open');chat.open=false;
+  if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+$('#btnChat').addEventListener('click',openChat);
+
+/* ================= ADMIN ================= */
+const F={name:$('#fName'),phone:$('#fPhone'),wa:$('#fWa'),avatar:$('#fAvatar'),yt:$('#fYt'),
+  web:$('#fWeb'),ig:$('#fIg'),ytL:$('#fYtLink'),fb:$('#fFb'),tt:$('#fTt'),car:$('#fCar'),gal:$('#fGal')};
+const lines=ta=>ta.value.split('\n').map(s=>s.trim()).filter(Boolean);
+function collectForm(){return{
+  name:F.name.value.trim()||BIO_DEFAULT.name,phone:F.phone.value.trim()||BIO_DEFAULT.phone,
+  whatsapp:F.wa.value.trim()||BIO_DEFAULT.whatsapp,avatar:F.avatar.value.trim(),youtube:F.yt.value.trim(),
+  links:{web:F.web.value.trim()||BIO_DEFAULT.links.web,ig:F.ig.value.trim()||BIO_DEFAULT.links.ig,
+    yt:F.ytL.value.trim()||BIO_DEFAULT.links.yt,fb:F.fb.value.trim()||BIO_DEFAULT.links.fb,tt:F.tt.value.trim()||BIO_DEFAULT.links.tt},
+  carousel:lines(F.car).length?lines(F.car):BIO_DEFAULT.carousel.slice(),
+  gallery:lines(F.gal).length?lines(F.gal).slice(0,4):BIO_DEFAULT.gallery.slice()};}
+function currentAsForm(){return{
+  name:BIO_DATA.name,phone:BIO_DATA.phone,whatsapp:BIO_DATA.whatsapp,avatar:BIO_DATA.avatar,youtube:BIO_DATA.youtube,
+  links:{...BIO_DATA.links},carousel:BIO_DATA.carousel.slice(),gallery:BIO_DATA.gallery.slice()};}
+function fillForm(d){F.name.value=d.name;F.phone.value=d.phone;F.wa.value=d.whatsapp;
+  F.avatar.value=d.avatar||'';F.yt.value=d.youtube||'';
+  F.web.value=d.links.web;F.ig.value=d.links.ig;F.ytL.value=d.links.yt;F.fb.value=d.links.fb;F.tt.value=d.links.tt;
+  F.car.value=(d.carousel||[]).join('\n');F.gal.value=(d.gallery||[]).join('\n');}
+function applyData(d){applyDraft(d);renderIdentity();renderCarousel();renderGallery();setWaLinks();carPlay();}
+function renderLeads(){const leads=store.get('bioLeads',[]);
+  $('#leadsCount').textContent=leads.length?'('+leads.length+')':'';
+  $('#leadsList').innerHTML=leads.length
+    ?leads.slice(-8).reverse().map(l=>'<li><b>'+esc(l.name||'?')+'</b> — '+esc(l.service||'?')+' · '+esc(l.phone||'?')+'<br><small style="color:#9a9a8a">'+new Date(l.ts).toLocaleString()+' · '+(l.lang||'').toUpperCase()+'</small></li>').join('')
+    :'<li style="color:#9a9a8a">Aucune demande pour le moment.</li>';}
+function openAdmin(){$('#admin').classList.add('open');renderLeads();
+  if(location.hash!=='#admin')history.replaceState(null,'','#admin');}
+function closeAdmin(){$('#admin').classList.remove('open');
+  if(location.hash==='#admin')history.replaceState(null,'',location.pathname+location.search);}
+$('#adminGear').addEventListener('click',openAdmin);
+$('#adminClose').addEventListener('click',closeAdmin);
+$('#btnSave').addEventListener('click',()=>{store.set('bioDraft',collectForm());toast('💾 Brouillon sauvegardé');});
+$('#btnPrev').addEventListener('click',()=>{applyData(collectForm());store.set('bioDraft',collectForm());closeAdmin();toast('👁 Aperçu appliqué');});
+$('#btnRst').addEventListener('click',()=>{store.del('bioDraft');
+  applyData(JSON.parse(JSON.stringify(BIO_DEFAULT)));fillForm(currentAsForm());toast('↺ Données réinitialisées');});
+$('#btnDl').addEventListener('click',()=>{
+  const d=collectForm();
+  const doc=document.documentElement.cloneNode(true);
+  doc.querySelectorAll('.reveal').forEach(e=>e.classList.remove('in'));
+  doc.querySelectorAll('.acc-b').forEach(b=>b.classList.remove('open'));
+  doc.querySelectorAll('.acc-h').forEach(h=>h.setAttribute('aria-expanded','false'));
+  const cb=doc.querySelector('#chatBody');if(cb)cb.innerHTML='';
+  ['chatBackdrop','admin'].forEach(id=>{const el=doc.getElementById(id);if(el)el.classList.remove('open');});
+  const ct=doc.querySelector('.car-track');if(ct)ct.style.transform='';
+  const to=doc.querySelector('#toast');if(to){to.classList.remove('show');to.textContent='';}
+  doc.documentElement.setAttribute('lang','fr');doc.documentElement.removeAttribute('dir');
+  let html='<!DOCTYPE html>\n'+doc.outerHTML;
+  html=html.replace(/\/\*BIO_DATA_START\*\/[\s\S]*?\/\*BIO_DATA_END\*\//,
+    '/*BIO_DATA_START*/\nlet BIO_DATA = '+JSON.stringify(d,null,1)+';\n/*BIO_DATA_END*/');
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  toast('⬇ HTML téléchargé — prêt à publier');
+});
+
+/* ================= TOAST / CLAVIER / REVEAL ================= */
+let toastT;function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2400);}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(chat.open)closeChat();
+    else if($('#admin').classList.contains('open'))closeAdmin();
+  }
+  if(e.key==='Tab'){
+    const cont=chat.open?$('.chat'):($('#admin').classList.contains('open')?$('#admin'):null);
+    if(!cont)return;
+    const f=$$('a[href],button:not([disabled]),input,textarea',cont).filter(x=>x.offsetParent!==null);
+    if(!f.length)return;
+    const first=f[0],last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
+});
+$$('.flag').forEach(f=>f.addEventListener('click',()=>applyLang(f.dataset.lang)));
+window.addEventListener('hashchange',()=>{location.hash==='#admin'?openAdmin():closeAdmin();});
+
+/* ================= INIT ================= */
+renderIdentity();renderCarousel();renderGallery();
+fillForm(currentAsForm());
+applyLang(LANG);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+$$('.reveal').forEach((el,i)=>{el.style.transitionDelay=Math.min(i*70,420)+'ms';io.observe(el);});
+if(REDUCED)$$('.reveal').forEach(el=>el.classList.add('in'));
+carPlay();
+if(location.hash==='#admin')openAdmin();
+</script>
+</body>
+</html>
